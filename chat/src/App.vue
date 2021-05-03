@@ -5,7 +5,7 @@
     <v-main>
       <v-container> 
         <v-app-bar app color="#6495ED" height=90px>
-          <v-toolbar-title>Jake's Chat</v-toolbar-title>
+          <v-toolbar-title>JakeChat</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-btn v-if="userLoggedIn()" @click="goCreateGroupScreen" color=yellow> Create Groups </v-btn>
           <v-btn v-if="userLoggedIn()" @click="goActiveGroupScreen" color=yellow> View Active Groups </v-btn>
