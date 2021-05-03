@@ -1,15 +1,13 @@
 <template>
   <v-app>  
 <div id="app">
-  <title>Chat App</title>
   <v-app>
     <v-main>
       <v-container> 
         <v-app-bar app color="#6495ED" height=90px>
           <v-toolbar-title>JakeChat</v-toolbar-title>
+          <v-toolbar-title>Hello userName</v-toolbar-title>
           <v-spacer></v-spacer>
-          <v-btn v-if="userLoggedIn()" @click="goCreateGroupScreen" color=yellow> Create Groups </v-btn>
-          <v-btn v-if="userLoggedIn()" @click="goActiveGroupScreen" color=yellow> View Active Groups </v-btn>
           <v-btn v-if="userLoggedIn()" @click="doLogout" color=red>LogOut </v-btn>
           <v-btn v-else-if="doLogout" @click="userLoggedIn()" color=green >SignUp Below</v-btn>
         </v-app-bar>

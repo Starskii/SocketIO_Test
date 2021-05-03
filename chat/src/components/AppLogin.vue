@@ -14,6 +14,15 @@
           input name="Email" id="Email" type="text"  placeholder="Email" v-model="userEmail" 
         />
       </v-form>
+      
+      <v-form>
+        <v-text-field 
+        label="Display Name" 
+        prepend-icon="mdi-account-circle"
+        input name="DisplayName" id="DisplayName" type="text"  placeholder="Display Name" v-model="displayName" 
+        />
+      </v-form>
+
       <v-form>
         <v-text-field  
         input name="Password" id="Password"  placeholder="Password" v-model="userPassword" 
@@ -50,6 +59,7 @@ export default class AppLogin extends Vue {
   readonly $appDB!: FirebaseFirestore;
   private userEmail = "";
   private userPassword = "";
+  private displayName = "";
   private message = "";
   $router: any;
   get noInput(): boolean {
@@ -73,9 +83,11 @@ export default class AppLogin extends Vue {
           .collection('users/')
             .add({      
               userID: this.$appAuth.tenantId,
-              userEmail: this.userEmail
+              userEmail: this.userEmail,
+              displayName: this.displayName
             });
-        this.$router.push({ path: "/group" });
+
+        this.$router.push({ path: "/chat" });
       })
       .catch((err) => {
         this.showMessage(`Unable to create account ${err}`);
@@ -86,7 +98,7 @@ export default class AppLogin extends Vue {
       .signInWithEmailAndPassword(this.userEmail, this.userPassword)
       .then((u) => {
         this.showMessage(`Login successful UID ${u.user?.uid}`);
-        this.$router.push({ path: "/group" });
+        this.$router.push({ path: "/chat" });
       })
       .catch((err) => {
         this.showMessage(`Unable to login ${err}`);
