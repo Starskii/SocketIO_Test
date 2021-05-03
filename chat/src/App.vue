@@ -1,6 +1,7 @@
 <template>
   <v-app>  
 <div id="app">
+  <title>Chat App</title>
   <v-app>
     <v-main>
       <v-container> 

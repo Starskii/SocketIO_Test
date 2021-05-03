@@ -8,11 +8,11 @@ const myRoutes: Array<RouteConfig> = [
   {
     name: "Login",
     path: "/",
-    component: AppLogin,
+    component: AppLogin
   }
 ];
 
 export const AppRouter = new VueRouter({ 
   routes: myRoutes, 
-  mode: "history" 
+  mode: "history"
 });   

@@ -26,7 +26,7 @@
      {{ message }} 
       <v-divider></v-divider>
     <v-card-actions>
-        <v-btn  elevation= "18" color= "green" :disabled="noInput" @click="createAccount"> SignUp</v-btn>
+        <v-btn  elevation= "18" color= "green" :disabled="noInput" @click="createAccount">SignUp</v-btn>
           <v-spacer></v-spacer>
         <v-btn elevation="18" color ="green" :disabled="noInput" @click="authenticate">LogIn</v-btn>
     </v-card-actions>
