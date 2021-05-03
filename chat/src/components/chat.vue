@@ -1,5 +1,14 @@
 <template>
-<h1> Congratulations! You may now contact Jake! </h1> 
+    <body>
+        <div id="wrapper">
+            </div>
+            <div id="chatbox"></div>
+            <form name="message" action="">
+                <input name="usermsg" type="text" id="usermsg" />
+                <input name="submitmsg" type="submit" id="submitmsg" value="Send" />
+            </form>
+        </div>
+    </body>
 </template>
 
 

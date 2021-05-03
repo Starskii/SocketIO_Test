@@ -1,12 +1,12 @@
 <template>
+
   <v-app>  
 <div id="app">
   <v-app>
     <v-main>
       <v-container> 
-        <v-app-bar app color="#6495ED" height=90px>
-          <v-toolbar-title>JakeChat</v-toolbar-title>
-          <v-toolbar-title>Hello userName</v-toolbar-title>
+        <v-app-bar app src="./assets/header.jpg" color="#6495ED" height=90px>
+          <v-toolbar-title style="color: white">JakeChat</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-btn v-if="userLoggedIn()" @click="doLogout" color=red>LogOut </v-btn>
           <v-btn v-else-if="doLogout" @click="userLoggedIn()" color=green >SignUp Below</v-btn>
