@@ -1,8 +1,6 @@
 <template>
     <body>
-        <div id="wrapper">
-            </div>
-            <div id="chatbox"></div>
+            <div id="chatbox">
             <form name="message" action="">
                 <input name="usermsg" type="text" id="usermsg" />
                 <input name="submitmsg" type="submit" id="submitmsg" value="Send" />
