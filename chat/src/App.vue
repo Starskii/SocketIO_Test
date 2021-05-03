@@ -12,8 +12,8 @@
           <v-btn v-else-if="doLogout" @click="userLoggedIn()" color=green >SignUp Below</v-btn>
         </v-app-bar>
       </v-container>
-      <router-view></router-view>
     </v-main>
+  <router-view></router-view>
   </v-app>
 </div>
    
@@ -94,5 +94,10 @@ button{
 
 #app color{
   color: red;
+  background: url("./assets/background.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 </style>
