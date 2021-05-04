@@ -1,4 +1,4 @@
-<template>
+<template id="fullApp">
 
   <v-app>  
 <div id="app">
@@ -80,7 +80,7 @@ button{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #363611;
-  margin-top: 60px;
+  margin-top: 1000px;
 }
 #top {
   display: grid;
@@ -92,7 +92,7 @@ button{
 
 }
 
-#app color{
+#fullApp color{
   color: red;
   background: url("./assets/background.jpg") no-repeat center center fixed; 
     -webkit-background-size: cover;
