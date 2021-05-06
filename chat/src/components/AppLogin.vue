@@ -4,7 +4,32 @@
   <v-app id="inspire">
     <v-card width="400px" class="mx-auto mt-5">
     <v-card-title>
-      <h1 class="display-1" >SignUp | Login</h1>
+
+      <v-tabs
+          v-model="tab"
+          align-with-title
+        >
+          <v-tabs-slider color="blue"></v-tabs-slider>
+
+          <v-tab
+            v-for="item in items"
+            :key="item"
+          >
+            {{ item }}
+          </v-tab>
+        </v-tabs>
+
+         <v-tabs-items v-model="tab">
+      <v-tab-item
+        v-for="item in items"
+        :key="item"
+      >
+        <v-card flat>
+          <v-card-text v-text="text"></v-card-text>
+        </v-card>
+      </v-tab-item>
+    </v-tabs-items>
+
     </v-card-title> 
     <v-card-text>
       <v-form>
@@ -35,9 +60,9 @@
      {{ message }} 
       <v-divider></v-divider>
     <v-card-actions>
-        <v-btn  elevation= "18" color= "green" :disabled="noInput" @click="createAccount">SignUp</v-btn>
+        <v-btn  elevation= "18" color= "blue" :disabled="noInput" @click="createAccount">SignUp</v-btn>
           <v-spacer></v-spacer>
-        <v-btn elevation="18" color ="green" :disabled="noInput" @click="authenticate">LogIn</v-btn>
+        <v-btn elevation="18" color ="blue" :disabled="noInput" @click="authenticate">LogIn</v-btn>
     </v-card-actions>
     </v-card>
   </v-app>
@@ -61,7 +86,12 @@ export default class AppLogin extends Vue {
   private userPassword = "";
   private displayName = "";
   private message = "";
+  private items: string[] = [
+    "Login",
+    "Sign Up"
+  ]
   $router: any;
+
   get noInput(): boolean {
     return this.userEmail.length === 0 || this.userPassword.length === 0;
   }
@@ -87,7 +117,7 @@ export default class AppLogin extends Vue {
               displayName: this.displayName
             });
 
-        this.$router.push({ path: "/chat" });
+        this.$router.push({ path: "/Chat" });
       })
       .catch((err) => {
         this.showMessage(`Unable to create account ${err}`);
@@ -98,7 +128,7 @@ export default class AppLogin extends Vue {
       .signInWithEmailAndPassword(this.userEmail, this.userPassword)
       .then((u) => {
         this.showMessage(`Login successful UID ${u.user?.uid}`);
-        this.$router.push({ path: "/chat" });
+        this.$router.push({ path: "/Chat" });
       })
       .catch((err) => {
         this.showMessage(`Unable to login ${err}`);
@@ -110,7 +140,8 @@ export default class AppLogin extends Vue {
 
 <style scoped>
 
-#inspire {
+#inspire{
+  color: red;
   background: url("../assets/background.jpg") no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;

@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter,{ RouteConfig } from "vue-router";
 import AppLogin from "./components/AppLogin.vue";
-import Chat from "./components/chat.vue";
+import Chat from "./components/Chat.vue";
 
 
 Vue.use(VueRouter);
@@ -12,8 +12,8 @@ const myRoutes: Array<RouteConfig> = [
     component: AppLogin
   },
   {
-    name: "chat",
-    path: "/chat",
+    name: "Chat",
+    path: "/Chat",
     component: Chat
   }
 ];
