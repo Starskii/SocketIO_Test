@@ -34,14 +34,14 @@
             :label=form.name
             :type=form.type
             :placeholder=form.placeholder
-            :v-model="form.model"
+            :v-model=form.model
             >
             </v-text-field>
 
             </v-form>
           {{ message }} 
 
-        <v-btn  elevation= "18" color= "blue" top :style="{left: '42%', transform:'translateX(-50%)'}" @click="createAccount">{{item.content.buttonText}}</v-btn>
+        <v-btn  elevation= "18" color= "blue" top :style="{left: '42%', transform:'translateX(-50%)'}" @click="buttonPressed(item.content.createAccount, item.content)">{{item.content.buttonText}}</v-btn>
 
           </v-card-text>
         </v-card>
@@ -60,6 +60,14 @@ import { Component, Vue } from "vue-property-decorator";
 import { FirebaseFirestore } from "@firebase/firestore-types";
 import { FirebaseAuth } from "@firebase/auth-types";
 
+interface dataObj{
+  forms: [
+    {
+      model: ""
+    }
+  ]
+}
+
 
 @Component
 export default class AppLogin extends Vue {
@@ -74,7 +82,8 @@ export default class AppLogin extends Vue {
                 {name: "Email", type:"text", placeholder: "Email", model: ""},
                 {name: "Password", type: "password", placeholder: "Password", model: ""}
               ],
-              buttonText: "Login"
+              buttonText: "Login",
+              createAccount: false
           } },
           { 
             tab: 'Sign Up', content: {
@@ -83,7 +92,8 @@ export default class AppLogin extends Vue {
                 {name: "Email", type:"text", placeholder: "Email", model: ""},
                 {name: "Password", type: "password", placeholder: "Password", model: ""}
               ],
-              buttonText: "SignUp"
+              buttonText: "SignUp",
+              createAccount: true
           } }
         ],
       }
@@ -106,6 +116,21 @@ export default class AppLogin extends Vue {
       // Auto disappear after 5 seconds
       this.message = "";
     }, 5000);
+  }
+
+  buttonPressed(createAccount: boolean, formsList: dataObj): void {
+    if(createAccount){
+      //SignUp
+      for(let models in formsList.forms){
+        console.log(formsList.forms[models]);
+      }
+    }else{
+      //Login
+      console.log("login");
+      for(let models in formsList.forms){
+        console.log(formsList.forms[models]);
+      }
+    }
   }
 
   
