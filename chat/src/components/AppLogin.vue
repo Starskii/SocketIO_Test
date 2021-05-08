@@ -34,7 +34,7 @@
             :label=form.name
             :type=form.type
             :placeholder=form.placeholder
-            :v-model=form.model
+            v-model="form.model"
             >
             </v-text-field>
 
@@ -106,13 +106,6 @@ export default class AppLogin extends Vue {
   private userPassword = "";
   private displayName = "";
   private message = "";
-  private textFields = [
-    "",
-    "",
-    "",
-    "",
-    ""
-  ]
   $router: any;
 
   get noInput(): boolean {
@@ -135,7 +128,7 @@ export default class AppLogin extends Vue {
     }else{
       //Login
       for(let form in formList.forms){
-        console.log(form);
+        console.log(formList.forms[form].name + ": " + formList.forms[form].model);
       }
     }
   }
