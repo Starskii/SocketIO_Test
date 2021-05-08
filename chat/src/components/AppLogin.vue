@@ -2,8 +2,8 @@
 <div>
   <div id="app">
   <v-app id="inspire">
-    <v-card width="400px" class="mx-auto mt-5">
-    <v-card-title width="400px">
+    <v-card width="30%" class="mx-auto mt-5">
+    <v-card-title width="100%">
 
      <v-tabs
       v-model="tab"
@@ -60,14 +60,6 @@ import { Component, Vue } from "vue-property-decorator";
 import { FirebaseFirestore } from "@firebase/firestore-types";
 import { FirebaseAuth } from "@firebase/auth-types";
 
-interface dataObj{
-  forms: [
-    {
-      model: ""
-    }
-  ]
-}
-
 
 @Component
 export default class AppLogin extends Vue {
@@ -79,8 +71,8 @@ export default class AppLogin extends Vue {
           { 
             tab: 'Login', content: {
               forms: [
-                {name: "Email", type:"text", placeholder: "Email", model: ""},
-                {name: "Password", type: "password", placeholder: "Password", model: ""}
+                {name: "Email", type:"text", placeholder: "Email", model: 0},
+                {name: "Password", type: "password", placeholder: "Password", model: 1}
               ],
               buttonText: "Login",
               createAccount: false
@@ -88,9 +80,9 @@ export default class AppLogin extends Vue {
           { 
             tab: 'Sign Up', content: {
               forms: [
-                {name: "Display Name", type: "text", placeholder: "Display Name", model: ""},
-                {name: "Email", type:"text", placeholder: "Email", model: ""},
-                {name: "Password", type: "password", placeholder: "Password", model: ""}
+                {name: "Display Name", type: "text", placeholder: "Display Name", model: 2},
+                {name: "Email", type:"text", placeholder: "Email", model: 3},
+                {name: "Password", type: "password", placeholder: "Password", model: 4}
               ],
               buttonText: "SignUp",
               createAccount: true
@@ -105,6 +97,13 @@ export default class AppLogin extends Vue {
   private userPassword = "";
   private displayName = "";
   private message = "";
+  private textFields = [
+    "",
+    "",
+    "",
+    "",
+    ""
+  ]
   $router: any;
 
   get noInput(): boolean {
@@ -118,18 +117,11 @@ export default class AppLogin extends Vue {
     }, 5000);
   }
 
-  buttonPressed(createAccount: boolean, formsList: dataObj): void {
+  buttonPressed(createAccount: boolean, formIndex: number): void {
     if(createAccount){
       //SignUp
-      for(let models in formsList.forms){
-        console.log(formsList.forms[models]);
-      }
     }else{
       //Login
-      console.log("login");
-      for(let models in formsList.forms){
-        console.log(formsList.forms[models]);
-      }
     }
   }
 
