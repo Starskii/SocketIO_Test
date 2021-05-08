@@ -54,8 +54,17 @@
 </div>
 </template>
 
-
 <script lang="ts">
+
+interface DataFormat{
+  forms : [
+    {
+      name: string,
+      model: string
+    }
+  ]
+}
+
 import { Component, Vue } from "vue-property-decorator";
 import { FirebaseFirestore } from "@firebase/firestore-types";
 import { FirebaseAuth } from "@firebase/auth-types";
@@ -71,8 +80,8 @@ export default class AppLogin extends Vue {
           { 
             tab: 'Login', content: {
               forms: [
-                {name: "Email", type:"text", placeholder: "Email", model: 0},
-                {name: "Password", type: "password", placeholder: "Password", model: 1}
+                {name: "Email", type:"text", placeholder: "Email", model: ""},
+                {name: "Password", type: "password", placeholder: "Password", model: ""}
               ],
               buttonText: "Login",
               createAccount: false
@@ -80,9 +89,9 @@ export default class AppLogin extends Vue {
           { 
             tab: 'Sign Up', content: {
               forms: [
-                {name: "Display Name", type: "text", placeholder: "Display Name", model: 2},
-                {name: "Email", type:"text", placeholder: "Email", model: 3},
-                {name: "Password", type: "password", placeholder: "Password", model: 4}
+                {name: "Display Name", type: "text", placeholder: "Display Name", model: ""},
+                {name: "Email", type:"text", placeholder: "Email", model: ""},
+                {name: "Password", type: "password", placeholder: "Password", model: ""}
               ],
               buttonText: "SignUp",
               createAccount: true
@@ -117,11 +126,17 @@ export default class AppLogin extends Vue {
     }, 5000);
   }
 
-  buttonPressed(createAccount: boolean, formIndex: number): void {
+  buttonPressed(createAccount: boolean, formList: DataFormat): void {
     if(createAccount){
       //SignUp
+      for(let form in formList.forms){
+        console.log(formList.forms[form].name + ": " + formList.forms[form].model);
+      }
     }else{
       //Login
+      for(let form in formList.forms){
+        console.log(form);
+      }
     }
   }
 
