@@ -41,7 +41,7 @@
             </v-form>
           {{ message }} 
 
-        <v-btn  elevation= "18" color= "blue" top :style="{left: '42%', transform:'translateX(-50%)'}" @click="buttonPressed(item.content.createAccount, item.content)">{{item.content.buttonText}}</v-btn>
+        <v-btn  elevation= "100" color= "blue" top :style="{left: '42%', transform:'translateX(-50%)'}" @click="buttonPressed(item.content.createAccount, item.content)">{{item.content.buttonText}}</v-btn>
 
           </v-card-text>
         </v-card>
