@@ -120,31 +120,56 @@ export default class AppLogin extends Vue {
   }
 
   buttonPressed(createAccount: boolean, formList: DataFormat): void {
+    let uEmail = "";
+    let uPass = "";
+    let uDisplay = "";
+
     if(createAccount){
       //SignUp
       for(let form in formList.forms){
-        console.log(formList.forms[form].name + ": " + formList.forms[form].model);
+        if(formList.forms[form].name == "Display Name"){
+          uDisplay = formList.forms[form].model;
+        }else if(formList.forms[form].name == "Email"){
+          uEmail = formList.forms[form].model;
+        }else{
+          uPass = formList.forms[form].model;
+        }
       }
+      console.log(
+        "\nuEmail: " + uEmail +
+        "\nuPass: " + uPass +
+        "\nuDisplay: " + uDisplay
+      );
+      this.createAccount(uEmail, uPass, uDisplay);
     }else{
       //Login
       for(let form in formList.forms){
-        console.log(formList.forms[form].name + ": " + formList.forms[form].model);
+        if(formList.forms[form].name == "Email"){
+          uEmail = formList.forms[form].model;
+        }else{
+          uPass = formList.forms[form].model;
+        }
       }
+      console.log(
+        "\nuEmail: " + uEmail +
+        "\nuPass: " + uPass +
+        "\nuDisplay: " + uDisplay
+      );
+      this.authenticate(uEmail, uPass);
     }
   }
 
   
-  createAccount(): void {
+  createAccount(uEmail: string, uPass: string, uDisplay: string): void {
     this.$appAuth
-      .createUserWithEmailAndPassword(this.userEmail, this.userPassword)
+      .createUserWithEmailAndPassword(uEmail, uPass)
       .then((u) => {
         this.showMessage(`User create UID ${u.user?.uid}`);
           this.$appDB
           .collection('users/')
             .add({      
-              userID: this.$appAuth.tenantId,
-              userEmail: this.userEmail,
-              displayName: this.displayName
+              userEmail: uEmail,
+              displayName: uDisplay
             });
 
         this.$router.push({ path: "/Chat" });
@@ -153,9 +178,9 @@ export default class AppLogin extends Vue {
         this.showMessage(`Unable to create account ${err}`);
       });
   }
-  authenticate(): void {
+  authenticate(uEmail: string, uPass: string): void {
     this.$appAuth
-      .signInWithEmailAndPassword(this.userEmail, this.userPassword)
+      .signInWithEmailAndPassword(uEmail, uPass)
       .then((u) => {
         this.showMessage(`Login successful UID ${u.user?.uid}`);
         this.$router.push({ path: "/Chat" });
