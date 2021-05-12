@@ -1,5 +1,7 @@
 <template>
-<h1> This is JakeChat </h1>
+<v-card width="90%" class="mx-auto mt-5" color="rgb(150,150,255,.4)">
+  <h1> This is JakeChat</h1>
+</v-card>
 </template>
 
 

@@ -14,11 +14,9 @@
     </v-main>
   <router-view></router-view>
 </div>
-   
-    <v-tab> 
-    <v-btn v-if="userLoggedIn()" @click="doLogout">SignOut</v-btn>
-  </v-tab>
-    
+  
+    <v-btn id="signOut" v-if="userLoggedIn()" @click="doLogout" color="red">Lougout</v-btn>
+
   </v-app>
 </template>
 
@@ -87,6 +85,10 @@ button{
 .v-container{
   padding: auto;
 
+}
+
+#signOut{
+  align-self: center;
 }
 
 #inspire{

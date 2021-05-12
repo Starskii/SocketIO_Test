@@ -135,11 +135,6 @@ export default class AppLogin extends Vue {
           uPass = formList.forms[form].model;
         }
       }
-      console.log(
-        "\nuEmail: " + uEmail +
-        "\nuPass: " + uPass +
-        "\nuDisplay: " + uDisplay
-      );
       this.createAccount(uEmail, uPass, uDisplay);
     }else{
       //Login
@@ -150,11 +145,6 @@ export default class AppLogin extends Vue {
           uPass = formList.forms[form].model;
         }
       }
-      console.log(
-        "\nuEmail: " + uEmail +
-        "\nuPass: " + uPass +
-        "\nuDisplay: " + uDisplay
-      );
       this.authenticate(uEmail, uPass);
     }
   }
