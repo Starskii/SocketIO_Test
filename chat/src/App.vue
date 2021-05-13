@@ -15,7 +15,7 @@
   <router-view></router-view>
 </div>
   
-    <v-btn id="signOut" v-if="userLoggedIn()" @click="doLogout" color="red">Lougout</v-btn>
+    <v-btn id="signOut" v-if="userLoggedIn()" @click="doLogout" color="red">Logout</v-btn>
 
   </v-app>
 </template>
