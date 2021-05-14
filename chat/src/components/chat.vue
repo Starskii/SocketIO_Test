@@ -1,8 +1,8 @@
 <template>
 <v-card height="400px" width="90%" class="mx-auto mt-5" color="rgb(255,255,255,.75)">
-  <h1> This is JakeChat</h1>
+  <chat-window></chat-window>
   <v-divider></v-divider>
-  <chat-input></chat-input>
+  <chat-input align="end"></chat-input>
 </v-card>
 </template>
 
@@ -12,11 +12,13 @@ import { Component, Vue } from "vue-property-decorator";
 import { FirebaseFirestore } from "@firebase/firestore-types";
 import { FirebaseAuth } from "@firebase/auth-types";
 import ChatInput from "./ChatInput.vue";
+import ChatWindow from "./ChatWindow.vue";
 
 
 @Component({
   components: {
-    ChatInput
+    ChatInput,
+    ChatWindow
   },
 })
 export default class Chat extends Vue {
